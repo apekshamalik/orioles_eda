@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS teams (
-    team_id     INTEGER PRIMARY KEY,
+    team_id     INTEGER PRIMARY KEY NOT NULL,
     season      INTEGER,
     name        TEXT,
     abbreviation TEXT,
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS teams (
 );
 
 CREATE TABLE IF NOT EXISTS players (
-    player_id   INTEGER PRIMARY KEY,
+    player_id   INTEGER PRIMARY KEY NOT NULL,
     full_name   TEXT,
     birth_date  TEXT,
     position    TEXT,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS players (
 );
 
 CREATE TABLE IF NOT EXISTS games (
-    game_pk         INTEGER PRIMARY KEY,
+    game_pk         INTEGER PRIMARY KEY NOT NULL,
     game_date       TEXT,
     season          INTEGER,
     game_type       TEXT,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS games (
 );
 
 CREATE TABLE IF NOT EXISTS at_bats (
-    at_bat_id       TEXT PRIMARY KEY,
+    at_bat_id       TEXT PRIMARY KEY NOT NULL,
     game_pk         INTEGER,
     inning          INTEGER,
     half_inning     TEXT,
@@ -47,12 +47,12 @@ CREATE TABLE IF NOT EXISTS at_bats (
 );
 
 CREATE TABLE IF NOT EXISTS pitches (
-    pitch_id        TEXT PRIMARY KEY,
-    at_bat_id       TEXT,
-    game_pk         INTEGER,
-    game_date       TEXT,
-    pitcher_id      INTEGER,
-    batter_id       INTEGER,
+    pitch_id        TEXT PRIMARY KEY NOT NULL,
+    at_bat_id       TEXT NOT NULL,
+    game_pk         INTEGER NOT NULL,
+    game_date       TEXT NOT NULL,
+    pitcher_id      INTEGER NOT NULL,
+    batter_id       INTEGER NOT NULL,
     pitcher_team_id INTEGER,
     batter_team_id  INTEGER,
     pitch_type      TEXT,

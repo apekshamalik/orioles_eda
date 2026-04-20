@@ -8,13 +8,13 @@ def get_connection():
     return conn
 
 
-
 def init_db():
     schema_path = Path(__file__).parent / "schema.sql"
     
     with get_connection() as conn:
         with open(schema_path) as f:
             conn.executescript(f.read())
+        conn.commit()
 
 if __name__ == "__main__":
     init_db()
